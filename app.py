@@ -8,8 +8,11 @@ logger = logging.getLogger(name=__name__)
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello_world():
+def function_to_log_message(func_name, message) -> None:
+    getattr(logger, func_name)(message)
+
+
+def function_with_logs():
     # stdlib logging logger
     logger.debug("DEBUG")
     logger.info("INFO")
@@ -22,6 +25,11 @@ def hello_world():
     app.logger.warning("WARNING Flask")
     app.logger.error("ERROR Flask")
     app.logger.critical("CRITICAL Flask")
+
+
+@app.route("/")
+def hello_world():
+    function_with_logs()
     return "Hello World!"
 
 

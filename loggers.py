@@ -17,18 +17,11 @@ LOGGING_CONFIG = {
         }
     },
     "filters": {
-        "warning_filter": {
-            "()": "loggers.SelectedLevelFilter",
-            "level": logging.WARNING,
-        },
+        "warning_filter": {"()": "loggers.SelectedLevelFilter", "level": logging.WARNING},
         "error_filter": {"()": "loggers.SelectedLevelFilter", "level": logging.ERROR},
     },
     "handlers": {
-        "default": {
-            "class": logging.StreamHandler,
-            "level": Settings.LOG_LEVEL,
-            "formatter": "default",
-        },
+        "default": {"class": logging.StreamHandler, "level": Settings.LOG_LEVEL, "formatter": "default"},
         "warning_file_handler": {
             "class": RotatingFileHandler,
             "formatter": "default",
@@ -48,10 +41,7 @@ LOGGING_CONFIG = {
             "encoding": "utf-8",
         },
     },
-    "root": {
-        "level": Settings.LOG_LEVEL,
-        "handlers": ["default", "warning_file_handler", "error_file_handler"],
-    },
+    "root": {"level": Settings.LOG_LEVEL, "handlers": ["default", "warning_file_handler", "error_file_handler"]},
     "loggers": {
         # TODO: Add extra loggers here 😊
     },
